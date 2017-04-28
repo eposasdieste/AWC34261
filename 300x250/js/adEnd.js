@@ -7,15 +7,18 @@ banner.adEnd = function(){
     A.dCall(B.adEndProps.openDelay, function(){
       A.visible('bubble');
       A.invisible('btn');
+      A.set('canvas', {alpha:0.5});
         A.dCall(B.adEndProps.closeDelay, function(){
           B.adState = 'ended';
           A.invisible('bubble');
+          A.set('canvas', {alpha:1});
           A.visible('btn');
           B.showReload(1);
         });
       });
   }else{
     A.invisible('bubble');
+    A.set('canvas', {alpha:1});
     A.visible('btn');
     B.showReload(1);
   }

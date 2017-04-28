@@ -5,6 +5,7 @@ banner.setUpDivs = function(){
               A.visible('bubble');
               A.visible('x');
               A.set('reload', {alpha:0.5});
+              A.set('canvas', {alpha:0.5});
               A.set('btn', {alpha:0});
               banner.legalOpen = true;
           }else{
@@ -18,6 +19,7 @@ banner.setUpDivs = function(){
           if(banner.adState === 'ended'){
               A.invisible('bubble');
               A.invisible('x');
+              A.set('canvas', {alpha:1});
               A.set('reload', {alpha:1});
               A.set('btn', {alpha:1});
               banner.legalOpen = false;

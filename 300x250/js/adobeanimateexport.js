@@ -1,5 +1,5 @@
 var canvas, stage, exportRoot;
-function init() {
+function adobeanimate_init() {
 	canvas = document.getElementById("canvas");
 	handleComplete();
 }
