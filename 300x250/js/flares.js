@@ -1,33 +1,62 @@
-//flare animation functions 
-
-var delay_time_incr = 0;
-var flares_x_start = -60, flares_to_x = 220, flares_duration = 2.5;
-
-function getFlareDelay(){
-  delay_time_incr++;
-  console.log(delay_time_incr);
-  return delay_time_incr;
-}
+//flares x start and end 
+var flares_x_start = -60,
+    flares_to_x = 220;
+//flares y positions
+var flare_top_y_pos = 234,
+    flare_btm_y_pos = -2;
+//flare animation duration
+var flare_dur = 2.5;
+//have flare parameters been set?
+var flareparamsset = false;
 
 function flares(dur){
-  A.dCall(getFlareDelay(), function(){
-    A.set('flare', {x:flares_x_start,y:234});
-    A.set('flare-copy', {x:flares_x_start,y:-2});
-    TweenLite.killTweensOf('#flare');
-    TweenLite.killTweensOf('#flare-copy');
-    // top flare
-    TweenLite.to('#flare-copy', dur/4, {alpha:1,onComplete:function(){
+  TweenLite.killTweensOf('#flare');
+  TweenLite.killTweensOf('#flare-copy');
+  // top flare
+  TweenLite.to('#flare-copy', dur/4, {alpha:1,onComplete:
+    function(){
       TweenLite.to('#flare-copy', 3*(dur/4), {alpha:0});
-    }});
-    TweenLite.to('#flare-copy', dur, {x:flares_to_x,ease:Power1.easeOut,onComplete:function() {TweenLite.set('#flare-copy',{x:flares_x_start});}});
-    // bottom flare
-    TweenLite.to('#flare', dur/4, {alpha:1,onComplete:function(){
+    }
+  });
+  TweenLite.to('#flare-copy', dur, {x:flares_to_x,ease:Power1.easeOut,onComplete:
+    function() {
+      TweenLite.set('#flare-copy',{x:flares_x_start});
+    }
+  });
+  // bottom flare
+  TweenLite.to('#flare', dur/4, {alpha:1,onComplete:
+    function(){
       TweenLite.to('#flare', 3*(dur/4), {alpha:0});
-    }});
-    TweenLite.to('#flare', dur, {x:flares_to_x,ease:Power1.easeOut,onComplete:
-      function(){
-        TweenLite.set('#flare',{x:flares_x_start});
-      }
-    });
+    }
+  });
+  TweenLite.to('#flare', dur, {x:flares_to_x,ease:Power1.easeOut,onComplete:
+    function(){
+      TweenLite.set('#flare',{x:flares_x_start});
+    }
+  });
+  
+}
+
+function setFlareParams(){
+  //set params of flares
+  A.set('flare', {x:flares_x_start,y:flare_top_y_pos});
+  A.set('flare-copy', {x:flares_x_start,y:flare_btm_y_pos});
+}
+
+function animateFlares(){
+  if(flareparamsset == false){
+    setFlareParams(); 
+    flareparamsset = true;
+  }
+  //flares
+  flares(flare_dur);
+  A.dCall(4, function(){
+    flares(flare_dur);
+  });
+  A.dCall(8.5, function(){
+    flares(flare_dur);
+  });
+  A.dCall(13, function(){
+    flares(flare_dur);
   });
 }

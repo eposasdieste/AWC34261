@@ -10,12 +10,12 @@ B.tOrigin = null;
 B.legalBubble = true;
 //initialize ad
 B.init = function(){
-  var e = ['2-1', 'phone', 'phones', 'blackborders', 'overlay', 'flare', 'flare', 'bubble', 'x'];
+  var e = ['phone', 'phones', 'blackborders', 'overlay', 'flare', 'flare', 'bubble', 'x'];
   var b = {x:0, y:0, atlas:true, dimensions:{w:90, h:22}};
   var r = {x:0, y:0, scale:0.5, transformOrigin:"13px 15px", reverse:false, hardRefresh:true};
   Main.init(null, null, e, b, '', r, null, null);
   B.prelim();
-  F.HDify(['blackborders', 'bubble', 'overlay', 'x', '2-1']);
+  F.HDify(['blackborders', 'bubble', 'overlay', 'x']);
 }
 //set preliminary steps -- has to do with splitImg functions
 B.prelim = function(){
@@ -26,7 +26,7 @@ B.prelim = function(){
       can = document.createElement('canvas');
       can.id = "canvas";
       document.body.appendChild(can);
-      //adobeanimate_init(); //adobe animate start-up code 
+      adobeanimate_init(); //adobe animate start-up code 
     })();
   }
   B.prelimDone = true;
@@ -37,27 +37,21 @@ B.animate = function(){
   A.set('blackborders', {x:-1,y:-1});
   B.addScrollableLegal(false);
   
-  // 'f1', 'f2', and so on, is the array of elements in each frame 
-  d = 2.5, st = 0.1;
-  var f1 = ['1-1'];
-  var f2 = ['2-1','2-2'];
-  var f3 = ['3-1','3-2'];
-  var f4 = ['4-1','4-2','4-3'];
+  //animation of flares handled in 'flares.js' file
+  animateFlares();
   
-  A.visible('2-1');
+  //phones 
+  A.from('phone', 1, {y:220});
+  A.dCall(11.5, phoneout);
+  A.dCall(12.5, phonesin);
   
-  //flares(3);
-  
-  var div = document.createElement('div');
-  div.id = "test";
-  div.style.width = "300px";
-  div.style.height = "250px";
-  div.style.backgroundImage = "url('img/2-1.png')";
-  div.style.backgroundSize = "100%";
-  div.style.backgroundColor = "red";
-  div.style.display = "absolute";
-  div.style.top = "-100px";
-  //document.getElementById('container').appendChild(div);
-  document.body.appendChild(div);
-  
+  function phoneout(){
+    A.to('phone', 0.75, {y:250,ease:Power1.easeIn});
+  }
+  function phonesin(){
+    A.from('phones', 0.75, {x:220,onComplete:adEnd});
+  }
+  function adEnd(){
+    B.adEnd();
+  }
 }
