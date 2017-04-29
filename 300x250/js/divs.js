@@ -32,7 +32,7 @@ banner.setUpDivs = function(){
   //custom 'btn' img elem
   b = document.createElement('img');
   b.id = 'btn';
-  b.src = '/img/btn.png';
+  b.src = 'img/btn.png';
   b.width = 300;
   b.style.position = 'absolute';
   b.style.cursor = 'pointer';
