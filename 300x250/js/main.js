@@ -40,6 +40,9 @@ B.animate = function(){
   //animation of flares handled in 'flares.js' file
   animateFlares();
   
+  //text
+  text.animate();
+  
   //phones 
   A.from('phone', 1, {y:220});
   A.dCall(11.5, phoneout);
@@ -55,3 +58,4 @@ B.animate = function(){
     B.adEnd();
   }
 }
+
