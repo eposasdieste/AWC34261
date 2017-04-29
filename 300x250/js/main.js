@@ -10,12 +10,12 @@ B.tOrigin = null;
 B.legalBubble = true;
 //initialize ad
 B.init = function(){
-  var e = ['phone', 'phones', 'blackborders', 'overlay', 'flare', 'flare', 'bubble', 'x'];
+  var e = ['2-1', 'phone', 'phones', 'blackborders', 'overlay', 'flare', 'flare', 'bubble', 'x'];
   var b = {x:0, y:0, atlas:true, dimensions:{w:90, h:22}};
   var r = {x:0, y:0, scale:0.5, transformOrigin:"13px 15px", reverse:false, hardRefresh:true};
   Main.init(null, null, e, b, '', r, null, null);
   B.prelim();
-  F.HDify(['blackborders', 'bubble', 'overlay', 'x']);
+  F.HDify(['blackborders', 'bubble', 'overlay', 'x', '2-1']);
 }
 //set preliminary steps -- has to do with splitImg functions
 B.prelim = function(){
@@ -26,7 +26,7 @@ B.prelim = function(){
       can = document.createElement('canvas');
       can.id = "canvas";
       document.body.appendChild(can);
-      adobeanimate_init(); //adobe animate start-up code 
+      //adobeanimate_init(); //adobe animate start-up code 
     })();
   }
   B.prelimDone = true;
@@ -44,10 +44,20 @@ B.animate = function(){
   var f3 = ['3-1','3-2'];
   var f4 = ['4-1','4-2','4-3'];
   
+  A.visible('2-1');
+  
   //flares(3);
   
-  
-  
-  
+  var div = document.createElement('div');
+  div.id = "test";
+  div.style.width = "300px";
+  div.style.height = "250px";
+  div.style.backgroundImage = "url('img/2-1.png')";
+  div.style.backgroundSize = "100%";
+  div.style.backgroundColor = "red";
+  div.style.display = "absolute";
+  div.style.top = "-100px";
+  //document.getElementById('container').appendChild(div);
+  document.body.appendChild(div);
   
 }
