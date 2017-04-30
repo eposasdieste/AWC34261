@@ -24,12 +24,12 @@ function flares(dur){
     }
   });
   // bottom flare
-  TweenLite.to('#flare', dur/4, {alpha:1,onComplete:
+  TweenLite.to('#flare', dur/4, {delay:dur/2, alpha:1,onComplete:
     function(){
       TweenLite.to('#flare', 3*(dur/4), {alpha:0});
     }
   });
-  TweenLite.to('#flare', dur, {x:flares_to_x,ease:Power1.easeOut,onComplete:
+  TweenLite.to('#flare', dur, {delay:dur/2, x:flares_to_x,ease:Power1.easeOut,onComplete:
     function(){
       TweenLite.set('#flare',{x:flares_x_start});
     }
