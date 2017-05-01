@@ -9,7 +9,7 @@ var text = {
   
   f1 :
   function(){
-    TweenLite.from(exportRoot.t1, 0.5, { delay:0.25, y:140, alpha:0, onComplete:function(){
+    TweenLite.from(exportRoot.t1, 0.5, { delay:0.25, y:240, alpha:0, onComplete:function(){
 	 TweenLite.delayedCall(3, function(){
 		TweenLite.to(exportRoot.t1, 0.5, { x:exportRoot.t1.x+10, alpha:0, ease:Power1.easeIn, onComplete:function(){
 			exportRoot.gotoAndPlay("f2");
