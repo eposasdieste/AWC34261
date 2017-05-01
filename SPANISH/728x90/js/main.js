@@ -56,7 +56,7 @@ B.animate = function(){
     A.to('phone', 0.75, {y:500,ease:Power1.easeIn});
   }
   function phonesin(){
-    A.from('phones', 0.75, {x:220,onComplete:adEnd});
+    A.from('phones', 0.75, {y:220,onComplete:adEnd});
   }
   function adEnd(){
     B.adEnd();
